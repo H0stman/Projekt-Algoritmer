@@ -23,5 +23,5 @@ class Graph
 
     public:
         Graph();
-        Graph(std::vector<std::string> graphData);
+        Graph(bool isDirected, std::vector<std::string> nodeNames, std::vector<std::string> edgeData);
 };
