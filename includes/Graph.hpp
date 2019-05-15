@@ -25,6 +25,6 @@ class Graph
 
     public:
         Graph() = default;
-        Graph(bool isDirected, std::vector<std::string> nodeNames, std::vector<std::vector<std::string>> edgeData);
+        Graph(bool isDirected, std::vector<std::string> &nodeNames, std::vector<std::vector<std::string>> &edgeData);
         ~Graph() = default;
 };

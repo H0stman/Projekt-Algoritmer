@@ -1,6 +1,6 @@
 #include "Graph.hpp"
 
-Graph::Graph(bool isDirected, std::vector<std::string> nodeNames, std::vector<std::vector<std::string>> edgeData)
+Graph::Graph(bool isDirected, std::vector<std::string> &nodeNames, std::vector<std::vector<std::string>> &edgeData)
 {
     enum Edg {FROM, TO, WEIGHT};
     
