@@ -5,7 +5,6 @@
 #include <fstream>
 #include "Graph.hpp"
 
-
 /*GraphIO är uttänkt ska läsa filen den får in korrekt och skapa en vector med nodes och en vektor med edgedata/edgees.*/
 
 class GraphIO
