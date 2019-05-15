@@ -24,5 +24,7 @@ class Graph
         void CreateEdge(size_t from, size_t to, uint16_t cost);
 
     public:
+        Graph() = default;
         Graph(bool isDirected, std::vector<std::string> nodeNames, std::vector<std::vector<std::string>> edgeData);
+        ~Graph() = default;
 };
