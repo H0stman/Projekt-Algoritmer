@@ -26,9 +26,9 @@ Graph GraphIO::CreateGraph() //bool directed, std::vector<std::string> nodes, st
         std::getline(stream, line);
         while (line != "" && stream.good())
         {
-            for (decltype(line.size()) index = 0; index != line.size() && x < 3; ++index)
+            for (decltype(line.size()) index = 0; index < line.size() && x < 3; ++index)
             {
-                if (!isspace(line[index]))
+                if (line[index] != '\t') 
                     word.push_back(line[index]);
                 else
                 {
