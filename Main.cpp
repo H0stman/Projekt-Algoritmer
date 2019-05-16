@@ -2,7 +2,7 @@
 
 int main(int argc, char const *argv[])
 {
-    /* code */
+    enum InParam {PROGRAMPATH, GRAPHFILE, VOIAGE};
+
     return 0;
-    
 }
