@@ -15,7 +15,7 @@ M
 N
 O
 
-A	J	3
+A   J	3
 A	D	2
 A	C	3
 A	H	5
