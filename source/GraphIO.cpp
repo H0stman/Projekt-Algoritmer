@@ -40,6 +40,7 @@ Graph GraphIO::CreateGraph() //bool directed, std::vector<std::string> nodes, st
             y++;
         }
     }
+    stream.close();
 }
 
 void WriteGraphToFile()
