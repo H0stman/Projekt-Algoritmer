@@ -1,15 +1,15 @@
 ifeq ($(OS), Windows NT)
-	BIN := Bin\\
-	BUILD := Build\\
-	SOURCE := Source\\
-	INCLUDES := Includes\\
+	BIN := bin\\
+	BUILD := build\\
+	SOURCE := source\\
+	INCLUDES := includes\\
 	DELETE := del
 	EXECUTABLE := $(BIN)ShortestPath.exe
 else
-	BIN := Bin/
-	BUILD := Build/
-	SOURCE := Source/
-	INCLUDES := Includes/
+	BIN := bin/
+	BUILD := build/
+	SOURCE := source/
+	INCLUDES := includes/
 	DELETE := rm
 	EXECUTABLE := $(BIN)ShortestPath
 endif
