@@ -4,7 +4,7 @@ GraphIO::GraphIO(std::string InputFilePath, std::string OutputFilePath) : inPath
 
 GraphIO::~GraphIO() {}
 
-Graph GraphIO::CreateGraph() //bool directed, std::vector<std::string> nodes, std::vector<std::string> edges
+Graph GraphIO::CreateGraph() const //bool directed, std::vector<std::string> nodes, std::vector<std::string> edges
 {
     std::string line;
     std::vector<std::string> nodes;
@@ -17,7 +17,7 @@ Graph GraphIO::CreateGraph() //bool directed, std::vector<std::string> nodes, st
         int y = 0;
         std::string word;
         std::getline(stream, line);
-        bool directed = (line == "UNDIRECTED" ? false : true);
+        directed = (line == "DIRECTED");
         while (line != "" && stream.good())
         {
             std::getline(stream, line);
@@ -28,7 +28,7 @@ Graph GraphIO::CreateGraph() //bool directed, std::vector<std::string> nodes, st
         {
             for (decltype(line.size()) index = 0; index < line.size() && x < 3; ++index)
             {
-                if (line[index] != '\t') 
+                if (line[index] != '\t')
                     word.push_back(line[index]);
                 else
                 {
@@ -42,9 +42,9 @@ Graph GraphIO::CreateGraph() //bool directed, std::vector<std::string> nodes, st
         }
     }
     stream.close();
-    return Graph(directed,nodes,edgesdata);
+    return Graph(directed, nodes, edgesdata);
 }
 
-void WriteGraphToFile()
+void WriteGraphToFile() const //VECTOR 1st element total cost in string, seconf string is the shortest path described 
 {
 }

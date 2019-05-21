@@ -18,6 +18,6 @@ private:
 public:
     GraphIO(std::string InputFilePath, std::string OutputFilePath);
     ~GraphIO();
-    Graph CreateGraph(); //bool directed, std::vector<std::string> nodes, std::vector<std::vector<std::string>> edgesdata
-    void WriteGraphToFile();
+    Graph CreateGraph() const; //bool directed, std::vector<std::string> nodes, std::vector<std::vector<std::string>> edgesdata
+    void WriteGraphToFile() const;
 };

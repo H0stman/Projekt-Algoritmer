@@ -36,3 +36,8 @@ void Graph::CreateEdge(size_t from, size_t to, uint16_t cost)
         newEdge.weight = cost;
         nodes[from].edges.push_back(newEdge);
 }
+
+std::vector<std::string> Graph::getNeighbors(std::string nodeName) const
+{
+    
+}
