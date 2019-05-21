@@ -14,8 +14,8 @@ class Graph
 
         struct Node
         {
-            std::string name;
-            std::vector<Edge> edges;
+            std::string name; // Name of a node
+            std::vector<Edge> edges; // Edges going out from a node.
         };
         
         bool directed;
@@ -30,5 +30,5 @@ class Graph
 
         std::vector<std::string> getAllNodes() const;
         std::vector<std::string> getNeighbors(const std::string &nodeName) const;
-        uint16_t getEdgeWeight(const std::string &startNode, const std::string /endNode) const;
+        uint16_t getEdgeWeight(const std::string &startNode, const std::string &endNode) const;
 };

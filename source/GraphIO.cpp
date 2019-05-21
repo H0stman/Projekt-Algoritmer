@@ -45,6 +45,13 @@ Graph GraphIO::CreateGraph() const //bool directed, std::vector<std::string> nod
     return Graph(directed, nodes, edgesdata);
 }
 
-void WriteGraphToFile() const //VECTOR 1st element total cost in string, seconf string is the shortest path described 
+void GraphIO::WriteGraphToFile(std::vector<std::string> shortPath) const //VECTOR 1st element total cost, second element is first node ... nth element is last node of the shortest path.
 {
+    std::fstream stream(inPath, std::fstream::in | std::fstream::out);
+    if (stream.is_open())
+    {
+        stream.write("0",1);
+
+    }
+    
 }

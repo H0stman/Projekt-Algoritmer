@@ -19,5 +19,5 @@ public:
     GraphIO(std::string InputFilePath, std::string OutputFilePath);
     ~GraphIO();
     Graph CreateGraph() const; //bool directed, std::vector<std::string> nodes, std::vector<std::vector<std::string>> edgesdata
-    void WriteGraphToFile() const;
+    void WriteGraphToFile(std::vector<std::string> shortPath) const;
 };

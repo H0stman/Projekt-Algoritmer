@@ -37,7 +37,22 @@ void Graph::CreateEdge(size_t from, size_t to, uint16_t cost)
         nodes[from].edges.push_back(newEdge);
 }
 
-std::vector<std::string> Graph::getNeighbors(std::string nodeName) const
+std::vector<std::string> Graph::getNeighbors(const std::string &nodeName) const
 {
-    
+    std::vector<std::string> neighbors;
+    size_t index = nodes.size();
+    while(nodes[--index].name != nodeName); 
+    for (auto &&i : nodes[index].edges)
+        neighbors.push_back(nodes[i.target].name);   
+    return neighbors;
 }
+
+uint16_t Graph::getEdgeWeight(const std::string &startNode, const std::string &endNode) const
+{
+    size_t index1 = nodes.size();
+    while(nodes[--index1].name != startNode);
+    size_t index2 = nodes[index1].edges.size();
+    while(nodes[nodes[index1].edges[--index2].target].name != endNode);
+    return nodes[index1].edges[index2].weight;
+}
+
