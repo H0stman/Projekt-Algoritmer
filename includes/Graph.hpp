@@ -27,4 +27,8 @@ class Graph
         Graph() = default;
         Graph(bool isDirected, std::vector<std::string> &nodeNames, std::vector<std::vector<std::string>> &edgeData);
         ~Graph() = default;
+
+        std::vector<std::string> getAllNodes() const;
+        std::vector<std::string> getNeighbors(std::string nodeName) const;
+        
 };
