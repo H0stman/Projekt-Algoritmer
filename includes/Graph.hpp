@@ -29,6 +29,6 @@ class Graph
         ~Graph() = default;
 
         std::vector<std::string> getAllNodes() const;
-        std::vector<std::string> getNeighbors(std::string nodeName) const;
-        
+        std::vector<std::string> getNeighbors(const std::string &nodeName) const;
+        uint16_t getEdgeWeight(const std::string &startNode, const std::string /endNode) const;
 };
