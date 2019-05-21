@@ -1,15 +1,15 @@
 ifeq ($(OS), Windows NT)
-	BIN := bin\\
-	BUILD := build\\
-	SOURCE := source\\
-	INCLUDES := includes\\
+	BIN := Bin\\
+	BUILD := Build\\
+	SOURCE := Source\\
+	INCLUDES := Includes\\
 	DELETE := del
 	EXECUTABLE := $(BIN)ShortestPath.exe
 else
-	BIN := bin/
-	BUILD := build/
-	SOURCE := source/
-	INCLUDES := includes/
+	BIN := Bin/
+	BUILD := Build/
+	SOURCE := Source/
+	INCLUDES := Includes/
 	DELETE := rm
 	EXECUTABLE := $(BIN)ShortestPath
 endif
@@ -22,17 +22,17 @@ all: $(EXECUTABLE)
 $(EXECUTABLE): $(BUILD)Main.o $(BUILD)PriorityQueue.o $(BUILD)Graph.o $(BUILD)GraphIO.o $(BUILD)DijkstrasAlgo.o
 	$(FLAGSL) $(BUILD)Main.o $(BUILD)PriorityQueue.o $(BUILD)Graph.o $(BUILD)GraphIO.o $(BUILD)DijkstrasAlgo.o -o $(EXECUTABLE)
 
-$(BUILD)Main.o: $(SOURCE)Main.cpp
-	$(FLAGSO) $(SOURCE)Main.cpp -o $(BUILD)Main.o
+$(BUILD)Main.o: $(SOURCE)Main.cpp $(INCLUDES)Graph.hpp $(INCLUDES)GraphIO.hpp
+	$(FLAGSO) $(SOURCE)Main.cpp -I$(INCLUDES) -o $(BUILD)Main.o
 
 $(BUILD)PriorityQueue.o: $(INCLUDES)PriorityQueue.h
-	$(FLAGSO) $(SOURCE)PriorityQueue.h -o $(BUILD)PriorityQueue.o
+	$(FLAGSO) $(INCLUDES)PriorityQueue.h -o $(BUILD)PriorityQueue.o
 
-$(BUILD)Graph.o: $(SOURCE)Graph.cpp
-	$(FLAGSO) $(SOURCE)Graph.cpp -o $(BUILD)Graph.o
+$(BUILD)Graph.o: $(SOURCE)Graph.cpp $(INCLUDES)Graph.hpp
+	$(FLAGSO) $(SOURCE)Graph.cpp -I$(INCLUDES) -o $(BUILD)Graph.o
 
-$(BUILD)GraphIO.o: $(SOURCE)GraphIO.cpp
-	$(FLAGSO) $(SOURCE)GraphIO.cpp -o $(BUILD)GraphIO.o
+$(BUILD)GraphIO.o: $(SOURCE)GraphIO.cpp $(INCLUDES)GraphIO.hpp
+	$(FLAGSO) $(SOURCE)GraphIO.cpp -I$(INCLUDES) -o $(BUILD)GraphIO.o
 
 $(BUILD)DijkstrasAlgo.o: $(SOURCE)DijkstrasAlgo.cpp
 	$(FLAGSO) $(SOURCE)DijkstrasAlgo.cpp -o $(BUILD)DijkstrasAlgo.o
