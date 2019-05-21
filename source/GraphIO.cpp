@@ -9,7 +9,7 @@ Graph GraphIO::CreateGraph() //bool directed, std::vector<std::string> nodes, st
     std::string line;
     std::vector<std::string> nodes;
     std::vector<std::vector<std::string>> edgesdata;
-
+    bool directed;
     std::fstream stream(inPath, std::fstream::in | std::fstream::out);
     if (stream.is_open())
     {
@@ -37,10 +37,12 @@ Graph GraphIO::CreateGraph() //bool directed, std::vector<std::string> nodes, st
                     x++;
                 }
             }
+            x = 0;
             y++;
         }
     }
     stream.close();
+    return Graph(directed,nodes,edgesdata);
 }
 
 void WriteGraphToFile()
