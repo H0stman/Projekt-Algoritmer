@@ -34,8 +34,8 @@ $(BUILD)Graph.o: $(SOURCE)Graph.cpp $(INCLUDES)Graph.hpp
 $(BUILD)GraphIO.o: $(SOURCE)GraphIO.cpp $(INCLUDES)GraphIO.hpp
 	$(FLAGSO) $(SOURCE)GraphIO.cpp -I$(INCLUDES) -o $(BUILD)GraphIO.o
 
-$(BUILD)DijkstrasAlgo.o: $(SOURCE)DijkstrasAlgo.cpp
-	$(FLAGSO) $(SOURCE)DijkstrasAlgo.cpp -o $(BUILD)DijkstrasAlgo.o
+$(BUILD)DijkstrasAlgo.o: $(SOURCE)DijkstrasAlgo.cpp $(INCLUDES)Graph.hpp
+	$(FLAGSO) $(SOURCE)DijkstrasAlgo.cpp -I$(INCLUDES) -o $(BUILD)DijkstrasAlgo.o
 
 clean:
 	-$(DELETE) $(BUILD)Main.o $(BUILD)PriorityQueue.o $(BUILD)Graph.o $(BUILD)GraphIO.o $(BUILD)DijkstrasAlgo.o $(EXECUTABLE)
