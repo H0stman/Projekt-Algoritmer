@@ -1,6 +1,6 @@
-DIRECTED
-First Town
-Second Town
+0
+11
+->Small Village->Metropolis
 Third Town
 Fourth Town
 Good City

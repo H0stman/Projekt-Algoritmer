@@ -9,7 +9,7 @@ private:
     struct Edge
     {
         size_t target;
-        uint16_t weight;
+        size_t weight;
     };
 
     struct Node
@@ -21,7 +21,7 @@ private:
     bool directed;
     std::vector<Node> nodes;
 
-    void CreateEdge(size_t from, size_t to, uint16_t cost);
+    void CreateEdge(size_t from, size_t to, size_t cost);
 
 public:
     Graph() = default;
@@ -30,5 +30,5 @@ public:
 
     std::vector<std::string> getAllNodes() const;
     std::vector<std::string> getNeighbors(const std::string &nodeName) const;
-    uint16_t getEdgeWeight(const std::string &startNode, const std::string &endNode) const;
+    size_t getEdgeWeight(const std::string &startNode, const std::string &endNode) const;
 };

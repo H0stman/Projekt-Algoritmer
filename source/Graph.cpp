@@ -1,4 +1,5 @@
 #include "Graph.hpp"
+#include<iostream>
 
 Graph::Graph(bool isDirected, std::vector<std::string> &nodeNames, std::vector<std::vector<std::string>> &edgeData)
 {
@@ -22,6 +23,7 @@ Graph::Graph(bool isDirected, std::vector<std::string> &nodeNames, std::vector<s
     // Create edges between nodes
     for (size_t i = 0; i < edgeData.size(); i++)
     {
+        std::cout << edgeData[i][Edg::FROM] << " -> " << edgeData[i][Edg::TO] << " ... " << edgeData[i][Edg::WEIGHT] << std::endl;
         size_t fromNode = 0;
         size_t toNode = 0;
         // Find the nodes the edge connects
@@ -37,12 +39,22 @@ Graph::Graph(bool isDirected, std::vector<std::string> &nodeNames, std::vector<s
     }
 }
 
-void Graph::CreateEdge(size_t from, size_t to, uint16_t cost)
+void Graph::CreateEdge(size_t from, size_t to, size_t cost)
 {
     Edge newEdge;
     newEdge.target = to;
     newEdge.weight = cost;
     nodes[from].edges.push_back(newEdge);
+}
+
+std::vector<std::string> Graph::getAllNodes() const
+{
+    std::vector<std::string> allNodes;
+    for (auto &&node : nodes)
+    {
+        allNodes.push_back(node.name);
+    }
+    return allNodes;
 }
 
 std::vector<std::string> Graph::getNeighbors(const std::string &nodeName) const
@@ -56,13 +68,11 @@ std::vector<std::string> Graph::getNeighbors(const std::string &nodeName) const
     return neighbors;
 }
 
-uint16_t Graph::getEdgeWeight(const std::string &startNode, const std::string &endNode) const
+size_t Graph::getEdgeWeight(const std::string &startNode, const std::string &endNode) const
 {
     size_t index1 = nodes.size();
-    while (nodes[--index1].name != startNode)
-        ;
+    while (nodes[--index1].name != startNode);
     size_t index2 = nodes[index1].edges.size();
-    while (nodes[nodes[index1].edges[--index2].target].name != endNode)
-        ;
+    while (nodes[nodes[index1].edges[--index2].target].name != endNode);
     return nodes[index1].edges[index2].weight;
 }
