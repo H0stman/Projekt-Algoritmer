@@ -50,8 +50,13 @@ void GraphIO::WriteGraphToFile(std::vector<std::string> shortPath) const //VECTO
     std::fstream stream(inPath, std::fstream::in | std::fstream::out);
     if (stream.is_open())
     {
-        stream.write("0",1);
-
+        stream << '0' << std::endl;
+        stream << shortPath[0] << std::endl;
+        for (size_t i = 1; i < shortPath.size(); i++)
+        {
+            stream << "->";
+            stream << shortPath[i];
+        }
     }
-    
+    stream.close();
 }
