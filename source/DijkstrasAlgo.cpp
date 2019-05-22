@@ -1,5 +1,5 @@
-#include"Graph.hpp"
-#include"PriorityQueue.h"
+#include "Graph.hpp"
+#include "PriorityQueue.h"
 
 struct Vertex
 {
@@ -9,9 +9,9 @@ struct Vertex
     uint16_t cost;
 
     Vertex();
-    Vertex(std::string nodeName,uint16_t sumCost);
+    Vertex(std::string nodeName, uint16_t sumCost);
     Vertex(std::string nodeName, std::string previousNode, uint16_t sumCost);
-    bool operator< (const Vertex &&other);
+    bool operator<(const Vertex &&other);
 };
 
 Vertex::Vertex() : name(""), previous(""), cost(Vertex::INFINITY) {}
@@ -20,13 +20,12 @@ Vertex::Vertex(std::string nodeName, uint16_t sumCost) : name(nodeName), previou
 
 Vertex::Vertex(std::string nodeName, std::string previousNode, uint16_t sumCost) : name(nodeName), previous(previousNode), cost(sumCost) {}
 
-bool Vertex::operator< (const Vertex &&other)
+bool Vertex::operator<(const Vertex &&other)
 {
     return (cost < other.cost);
 }
 
-
-std::vector<std::string>& DijkstrasAlgo(const Graph::Graph& network, const std::string& initialNode, const std::string& targetNode)
+std::vector<std::string> &DijkstrasAlgo(const Graph::Graph &network, const std::string &initialNode, const std::string &targetNode)
 {
     std::vector<Vertex> unvisited;
     std::vector<Vertex> visited;
@@ -57,7 +56,8 @@ std::vector<std::string>& DijkstrasAlgo(const Graph::Graph& network, const std::
         while (current == unvisited.end())
         {
             current = unvisited.begin();
-            while ((current->name != nextVertex.peek().name) && (current != unvisited.end())) current++;
+            while ((current->name != nextVertex.peek().name) && (current != unvisited.end()))
+                current++;
             if (current != unvisited.end())
             {
                 *current = nextVertex.peek();
@@ -67,7 +67,7 @@ std::vector<std::string>& DijkstrasAlgo(const Graph::Graph& network, const std::
     } while (current->name != targetNode);
     std::vector<std::string> shortestPath;
     shortestPath.push_back(std::to_string(current->cost));
-    
+
     auto retrace = visited.begin();
     do
     {

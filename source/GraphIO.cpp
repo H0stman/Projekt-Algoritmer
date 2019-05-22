@@ -32,7 +32,7 @@ Graph GraphIO::CreateGraph() const //bool directed, std::vector<std::string> nod
                     word.push_back(line[index]);
                 else
                 {
-                    edgesdata[y][x].push_back(word);
+                    edgesdata[y][x] = word;
                     word = "";
                     x++;
                 }

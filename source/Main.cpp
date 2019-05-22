@@ -4,8 +4,16 @@
 
 int main(int argc, char const *argv[])
 {
-    enum InParam {PROGRAMPATH, GRAPHFILE, VOIAGE};
+    enum InParam
+    {
+        PROGRAMPATH,
+        GRAPHFILE,
+        VOIAGE
+    };
 
-    std::cout << argc << std::endl << argv[InParam::PROGRAMPATH] << std::endl << argv[InParam::GRAPHFILE] << std::endl << argv[InParam::VOIAGE] << std::endl;
+    std::cout << argc << std::endl
+              << argv[InParam::PROGRAMPATH] << std::endl
+              << argv[InParam::GRAPHFILE] << std::endl
+              << argv[InParam::VOIAGE] << std::endl;
     return 0;
 }
