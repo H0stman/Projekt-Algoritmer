@@ -5,8 +5,10 @@
 #include <fstream>
 #include "Graph.hpp"
 
-/*GraphIO är uttänkt ska läsa filen den får in korrekt och skapa en vector med nodes och en vektor med edgedata/edgees.*/
-
+/*GraphIO är uttänkt ska läsa filen den får in korrekt, 
+skapa en vector med nodes och en vektor med edgedata/edgees.
+Detta blir alltså ett gränssnitt mellan filskrivandet/läsandet
+och den faktiska processeringen av graferna*/
 class GraphIO
 {
 private:
@@ -16,6 +18,6 @@ private:
 public:
     GraphIO(std::string InputFilePath, std::string OutputFilePath);
     ~GraphIO();
-    Graph CreateGraph() const; //bool directed, std::vector<std::string> nodes, std::vector<std::vector<std::string>> edgesdata
-    void WriteGraphToFile(std::vector<std::string> shortPath) const;
+    Graph CreateGraph() const;
+    void WriteSolutionToFile(std::vector<std::string> shortPath) const;
 };

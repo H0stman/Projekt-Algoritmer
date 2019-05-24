@@ -1,7 +1,6 @@
 #include "DijkstrasAlgo.hpp"
 #include <iostream>
 
-
 Vertex::Vertex() : name(""), previous(""), cost(Vertex::INFINITE) {}
 
 Vertex::Vertex(std::string nodeName, size_t sumCost) : name(nodeName), previous(""), cost(sumCost) {}
@@ -21,14 +20,15 @@ std::vector<std::string> DijkstrasAlgo(const Graph &network, const std::string &
     for (auto &&node : network.getAllNodes())
     {
         size_t cost = Vertex::INFINITE;
-        if (node == initialNode) cost = 0;
+        if (node == initialNode)
+            cost = 0;
         unvisited.push_back(Vertex(node, cost));
     }
 
     // Find the element holding the initialNode
     auto current = unvisited.begin();
-    while (current->name != initialNode) current++;
-
+    while (current->name != initialNode)
+        current++;
     PriorityQueue<Vertex> nextVertex;
 
     do
@@ -41,16 +41,14 @@ std::vector<std::string> DijkstrasAlgo(const Graph &network, const std::string &
         visited.push_back(*current);
         unvisited.erase(current);
         current = unvisited.end();
-        
+
         while ((current == unvisited.end()) && (!nextVertex.isEmpty()))
         {
             current = unvisited.begin();
             while ((current->name != nextVertex.peek().name) && (current != unvisited.end()))
                 current++;
             if (current != unvisited.end())
-            {
                 *current = nextVertex.peek();
-            }
             nextVertex.dequeue();
         }
     } while (current->name != targetNode);
@@ -62,9 +60,7 @@ std::vector<std::string> DijkstrasAlgo(const Graph &network, const std::string &
     {
         auto retrace = visited.begin();
         while (retrace->name != current->previous)
-        {
             ++retrace;
-        }
         shortestPath.push_back(current->name);
         current = retrace;
     }

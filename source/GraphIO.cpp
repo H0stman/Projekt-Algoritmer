@@ -7,10 +7,10 @@ GraphIO::~GraphIO() {}
 
 Graph GraphIO::CreateGraph() const //bool directed, std::vector<std::string> nodes, std::vector<std::string> edges
 {
+    bool directed;
     std::string line;
     std::vector<std::string> nodes;
     std::vector<std::vector<std::string>> edgesdata;
-    bool directed;
     std::fstream stream;
     stream.open(inPath);
     if (stream.is_open())
@@ -23,7 +23,7 @@ Graph GraphIO::CreateGraph() const //bool directed, std::vector<std::string> nod
             nodes.push_back(line);
             std::getline(stream, line);
         }
-        do 
+        do
         {
             std::getline(stream, line);
             std::vector<std::string> edge;
@@ -32,33 +32,26 @@ Graph GraphIO::CreateGraph() const //bool directed, std::vector<std::string> nod
             edge.push_back(temp.substr(0, temp.find('\t')));
             edge.push_back(temp.substr(edge[1].size() + 1, temp.size() - edge[1].size()));
             edgesdata.push_back(edge);
+
         } while (!stream.eof());
     }
     stream.close();
-    
     return Graph(directed, nodes, edgesdata);
 }
 
-void GraphIO::WriteGraphToFile(std::vector<std::string> shortPath) const //VECTOR 1st element total cost, second element is first node ... nth element is last node of the shortest path.
+//Writes 
+void GraphIO::WriteSolutionToFile(std::vector<std::string> shortPath) const 
 {
-    std::cout << "Total cost: " << shortPath[0] << std::endl << "Path taken: ";
+    std::ofstream myfile;
+    myfile.open(outPath, std::fstream::in | std::fstream::out | std::fstream::trunc);
+    myfile << '0' << std::endl;
+    myfile << shortPath[0] << std::endl;
     for (size_t i = 1; i < shortPath.size(); i++)
     {
-        std::cout << shortPath[i];
-        if (i != shortPath.size() - 1) std::cout << " -> ";
+        myfile << shortPath[i];
+        if (i != shortPath.size() - 1)
+            myfile << " -> ";
     }
-    std::cout << std::endl;
-    
-    std::fstream stream(outPath, std::fstream::in | std::fstream::out);
-    if (stream.is_open())
-    {
-        stream << '0' << std::endl;
-        stream << shortPath[0] << std::endl;
-        for (size_t i = 1; i < shortPath.size(); i++)
-        {
-            stream << "->";
-            stream << shortPath[i];
-        }
-    }
-    stream.close();
+    myfile << std::endl;
+    myfile.close();
 }
