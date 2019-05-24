@@ -6,7 +6,7 @@
 
 struct Vertex
 {
-    static const size_t INFINITY = ULLONG_MAX;
+    static const size_t INFINITE = ULLONG_MAX;
     std::string name;
     std::string previous;
     size_t cost;

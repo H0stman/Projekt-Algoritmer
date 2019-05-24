@@ -32,10 +32,6 @@ Graph::Graph(bool isDirected, std::vector<std::string> &nodeNames, std::vector<s
     // for (auto &&i : nodes)
     // {
     //     std::cout << i.name << ":\t";
-    //     // for (auto &&j : i.edges)
-    //     // {
-    //     //     std::cout << j.weight << "\t";
-    //     // }
     //     std::cout << std::endl;
     // }
 
@@ -56,6 +52,15 @@ Graph::Graph(bool isDirected, std::vector<std::string> &nodeNames, std::vector<s
         if (!directed)
             CreateEdge(toNode, fromNode, stoull(edgeData[i][Edg::WEIGHT]));
     }
+    // for (auto &&i : nodes)
+    // {
+    //     std::cout << i.name << ":\t";
+    //     for (auto &&j : i.edges)
+    //     {
+    //         std::cout << j.weight << "\t";
+    //     }
+    //     std::cout << std::endl;
+    // }
 }
 
 void Graph::CreateEdge(size_t from, size_t to, size_t cost)

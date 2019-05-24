@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-Vertex::Vertex() : name(""), previous(""), cost(Vertex::INFINITY) {}
+Vertex::Vertex() : name(""), previous(""), cost(Vertex::INFINITE) {}
 
 Vertex::Vertex(std::string nodeName, size_t sumCost) : name(nodeName), previous(""), cost(sumCost) {}
 
@@ -17,18 +17,17 @@ std::vector<std::string> DijkstrasAlgo(const Graph &network, const std::string &
 {
     std::vector<Vertex> unvisited;
     std::vector<Vertex> visited;
-    auto current = unvisited.begin();
+
     for (auto &&node : network.getAllNodes())
     {
-        size_t cost = Vertex::INFINITY;
-        if (node == initialNode)
-        {
-            cost = 0;
-            current = unvisited.end();
-        }
+        size_t cost = Vertex::INFINITE;
+        if (node == initialNode) cost = 0;
         unvisited.push_back(Vertex(node, cost));
     }
-    std::cout << "targetNode" << std::endl;
+
+    // Find the element holding the initialNode
+    auto current = unvisited.begin();
+    while (current->name != initialNode) current++;
 
     PriorityQueue<Vertex> nextVertex;
 
@@ -56,25 +55,28 @@ std::vector<std::string> DijkstrasAlgo(const Graph &network, const std::string &
         }
     } while (current->name != targetNode);
 
+    // Construct the retrace route - not first element has the total cost of route
     std::vector<std::string> shortestPath;
     shortestPath.push_back(std::to_string(current->cost));
-
-    auto retrace = visited.begin();
-    do
+    while (current->name != initialNode)
     {
+        auto retrace = visited.begin();
         while (retrace->name != current->previous)
         {
-            std::cout << retrace->name << "\t" << retrace->cost << "\t" << retrace->previous << std::endl;
             ++retrace;
         }
-        shortestPath.push_back(retrace->name);
+        shortestPath.push_back(current->name);
         current = retrace;
-    } while (current->name != initialNode);
-    // std::cout << shortestPath.size();
-    // for (auto &&i : shortestPath)
-    // {
-    //     std::cout << i << " -> ";
-    // }
-    
+    }
+    shortestPath.push_back(current->name);
+
+    // Invert retrace route to get the correct path
+    size_t last = shortestPath.size() - 1;
+    for (size_t first = 1; first < last; first++)
+    {
+        shortestPath[first].swap(shortestPath[last]);
+        last--;
+    }
+
     return shortestPath;
 }
