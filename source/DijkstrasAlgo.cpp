@@ -35,9 +35,7 @@ std::vector<std::string> DijkstrasAlgo(const Graph &network, const std::string &
     {
         std::vector<std::string> neighbors = network.getNeighbors(current->name);
         for (auto neighbor = neighbors.begin(); neighbor != neighbors.end(); neighbor++)
-        {
             nextVertex.enqueue(Vertex(*neighbor, current->name, network.getEdgeWeight(current->name, *neighbor) + current->cost));
-        }
         visited.push_back(*current);
         unvisited.erase(current);
         current = unvisited.end();
