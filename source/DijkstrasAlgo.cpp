@@ -33,27 +33,30 @@ std::vector<std::string> DijkstrasAlgo(const Graph &network, const std::string &
 
     do
     {
+        // Get all neighbors, set preceeding node and calculate total cost
         std::vector<std::string> neighbors = network.getNeighbors(current->name);
         for (auto neighbor = neighbors.begin(); neighbor != neighbors.end(); neighbor++)
         {
             nextVertex.enqueue(Vertex(*neighbor, current->name, network.getEdgeWeight(current->name, *neighbor) + current->cost));
         }
+        // Move current node from unvisited to visited
         visited.push_back(*current);
         unvisited.erase(current);
-        current = unvisited.end();
 
+        // Go to next node (that is also part of the unvisited set)
+        current = unvisited.end();
         while ((current == unvisited.end()) && (!nextVertex.isEmpty()))
         {
             current = unvisited.begin();
             while ((current->name != nextVertex.peek().name) && (current != unvisited.end()))
                 current++;
-            if (current != unvisited.end())
+            if (current != unvisited.end())     // Only consider this node if in set unvisited
                 *current = nextVertex.peek();
             nextVertex.dequeue();
         }
     } while (current->name != targetNode);
 
-    // Construct the retrace route - not first element has the total cost of route
+    // Construct the retrace route - note: first element has the total cost of route
     std::vector<std::string> shortestPath;
     shortestPath.push_back(std::to_string(current->cost));
     while (current->name != initialNode)

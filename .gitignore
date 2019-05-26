@@ -13,3 +13,5 @@
 .vscode/
 Build/
 Bin/
+Bin/ShortestPath.exe
+Answer.txt

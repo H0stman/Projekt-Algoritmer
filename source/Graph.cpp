@@ -12,16 +12,6 @@ Graph::Graph(bool isDirected, std::vector<std::string> &nodeNames, std::vector<s
 
     directed = isDirected;
 
-    // for (auto &&i : nodeNames)
-    // {
-    //     // for (auto &&j : i)
-    //     // {
-    //     //     std::cout << j << "\t";
-    //     // }
-    //     std::cout << i << "\t";
-    //     std::cout << std::endl;
-    // }
-
     // Create the nodes
     for (size_t i = 0; i < nodeNames.size(); i++)
     {
@@ -29,16 +19,10 @@ Graph::Graph(bool isDirected, std::vector<std::string> &nodeNames, std::vector<s
         newNode.name = nodeNames[i];
         nodes.push_back(newNode);
     }
-    // for (auto &&i : nodes)
-    // {
-    //     std::cout << i.name << ":\t";
-    //     std::cout << std::endl;
-    // }
 
     // Create edges between nodes
     for (size_t i = 0; i < edgeData.size(); i++)
     {
-        // std::cout << edgeData[i][Edg::FROM] << " -> " << edgeData[i][Edg::TO] << " ... " << edgeData[i][Edg::WEIGHT] << std::endl;
         size_t fromNode = 0;
         size_t toNode = 0;
         // Find the nodes the edge connects
@@ -52,15 +36,6 @@ Graph::Graph(bool isDirected, std::vector<std::string> &nodeNames, std::vector<s
         if (!directed)
             CreateEdge(toNode, fromNode, stoull(edgeData[i][Edg::WEIGHT]));
     }
-    // for (auto &&i : nodes)
-    // {
-    //     std::cout << i.name << ":\t";
-    //     for (auto &&j : i.edges)
-    //     {
-    //         std::cout << j.weight << "\t";
-    //     }
-    //     std::cout << std::endl;
-    // }
 }
 
 void Graph::CreateEdge(size_t from, size_t to, size_t cost)
