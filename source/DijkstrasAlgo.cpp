@@ -1,3 +1,9 @@
+/*
+ *
+ *     Kod: Oscar Milstein och Ove Ødegård
+ *
+ */
+
 #include "DijkstrasAlgo.hpp"
 #include <iostream>
 

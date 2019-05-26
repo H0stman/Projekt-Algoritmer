@@ -1,3 +1,9 @@
+/*
+ *
+ *     Kod: Oscar Milstein och Ove Ødegård
+ *
+ */
+
 #include <iostream>
 #include "Graph.hpp"
 #include "GraphIO.hpp"
