@@ -5,7 +5,6 @@
  */
 
 #include "GraphIO.hpp"
-#include <iostream>
 
 GraphIO::GraphIO(std::string InputFilePath, std::string OutputFilePath) : inPath(InputFilePath), outPath(OutputFilePath) {}
 

@@ -5,7 +5,6 @@
  */
 
 #include "DijkstrasAlgo.hpp"
-#include <iostream>
 
 Vertex::Vertex() : name(""), previous(""), cost(Vertex::INFINITE) {}
 

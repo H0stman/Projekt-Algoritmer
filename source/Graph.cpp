@@ -5,7 +5,6 @@
  */
 
 #include "Graph.hpp"
-#include<iostream>
 
 Graph::Graph(bool isDirected, std::vector<std::string> &nodeNames, std::vector<std::vector<std::string>> &edgeData)
 {

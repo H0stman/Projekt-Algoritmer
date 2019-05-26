@@ -4,7 +4,7 @@
  *
  */
 
-#include<string>
+#include <string>
 #include "Graph.hpp"
 #include "PriorityQueue.hpp"
 
