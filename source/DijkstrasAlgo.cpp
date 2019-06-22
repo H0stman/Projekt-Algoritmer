@@ -36,7 +36,7 @@ std::vector<std::string> DijkstrasAlgo(const Graph &network, const std::string &
         current++;
     PriorityQueue<Vertex> nextVertex;
 
-    do
+    while (current->name != targetNode)
     {
         // Get all neighbors, set preceeding node and calculate total cost
         std::vector<std::string> neighbors = network.getNeighbors(current->name);
@@ -59,7 +59,7 @@ std::vector<std::string> DijkstrasAlgo(const Graph &network, const std::string &
                 *current = nextVertex.peek();
             nextVertex.dequeue();
         }
-    } while (current->name != targetNode);
+    }
 
     // Construct the retrace route - note: first element has the total cost of route
     std::vector<std::string> shortestPath;
