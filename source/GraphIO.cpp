@@ -1,5 +1,10 @@
+/*
+ *
+ *     Kod: Oscar Milstein och Ove Ødegård
+ *
+ */
+
 #include "GraphIO.hpp"
-#include <iostream>
 
 GraphIO::GraphIO(std::string InputFilePath, std::string OutputFilePath) : inPath(InputFilePath), outPath(OutputFilePath) {}
 
@@ -27,9 +32,13 @@ Graph GraphIO::CreateGraph() const //bool directed, std::vector<std::string> nod
         {
             std::getline(stream, line);
             std::vector<std::string> edge;
+            // The substring from beginning to first tab
             edge.push_back(line.substr(0, line.find('\t')));
+            // The remaining substring saved to temp
             std::string temp = line.substr(edge[0].size() + 1, line.size() - edge[0].size());
+            // The substring before the first tab in temp
             edge.push_back(temp.substr(0, temp.find('\t')));
+            // The remaining substring of temp
             edge.push_back(temp.substr(edge[1].size() + 1, temp.size() - edge[1].size()));
             edgesdata.push_back(edge);
 

@@ -1,3 +1,9 @@
+/*
+ *
+ *     Kod: Oscar Milstein och Ove Ødegård
+ *
+ */
+
 #ifndef PRIORITYQUEUE_H
 #define PRIORITYQUEUE_H
 

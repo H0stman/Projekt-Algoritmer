@@ -1,4 +1,10 @@
-#include<string>
+/*
+ *
+ *     Kod: Oscar Milstein och Ove Ødegård
+ *
+ */
+
+#include <string>
 #include "Graph.hpp"
 #include "PriorityQueue.hpp"
 
